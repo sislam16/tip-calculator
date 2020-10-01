@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <h1>Split Tip</h1>
-      <form>
+      <form className='calculator'>
         <p>How much was your bill?</p> 
         <input type='number' name ='price' min='0' step='any'/>
         <p>How was your service?</p>
