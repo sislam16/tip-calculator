@@ -5,10 +5,14 @@ import './App.css';
 
 function App() {
   const serviceOptions = [
-    'Excellent = 30%',
-    'Great! = 20%',
-    'Good = 18%',
-    'Fair = 15%'
+    {quality:'Excellent',
+    value: 30},
+    {quality:'Great',
+    value: 20},
+    {quality:'Good',
+    value: 18},
+    {quality:'Fair',
+    value: 15}
   ]
   return (
     <div className="App">
@@ -21,7 +25,7 @@ function App() {
           <option>--Select an option--</option>
           {
             serviceOptions.map(el => 
-              <option>{el}</option>)
+              <option value = {el.value}>{el.quality}</option>)
           }
         </select>
         <p>How many people are splitting the tip?</p>
