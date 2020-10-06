@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 
 
-
 function App() {
   const serviceOptions = [
     {quality:'Excellent',
@@ -14,10 +13,17 @@ function App() {
     {quality:'Fair',
     value: 15}
   ]
+
+  const [selectedOption, setSelectedOption] = useState(0)
+
+  const calculateTip = async (e) =>{
+    e.preventDefault();
+    
+  }
   return (
     <div className="App">
       <h1>Split Tip</h1>
-      <form className='calculator'>
+      <form className='calculator' onSubmit = {calculateTip}>
         <p>How much was your bill?</p> 
         <input type='number' name ='price' min='0' step='any'/>
         <p>How was your service?</p>
@@ -33,7 +39,7 @@ function App() {
         <br/>
         <button>Split the tip!</button>
       </form>
-
+      <p></p>
     </div>
   );
 }
