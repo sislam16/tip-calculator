@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 
 
@@ -15,9 +15,15 @@ function App() {
   ]
 
   const [selectedOption, setSelectedOption] = useState(0)
-
+  const updateOption = (e) => {
+    setSelectedOption(e.target.value)
+    console.log(selectedOption)
+}
   const calculateTip = async (e) =>{
     e.preventDefault();
+    if(selectedOption !== 0){
+      
+    }
     
   }
   return (
@@ -27,7 +33,7 @@ function App() {
         <p>How much was your bill?</p> 
         <input type='number' name ='price' min='0' step='any'/>
         <p>How was your service?</p>
-        <select>
+        <select onChange = {updateOption} value ={selectedOption}>
           <option>--Select an option--</option>
           {
             serviceOptions.map(el => 
