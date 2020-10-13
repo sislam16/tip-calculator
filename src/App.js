@@ -15,6 +15,8 @@ function App() {
   ]
 
   const [selectedOption, setSelectedOption] = useState(0)
+  const [people, setPeople] = useState(null)
+  
   const updateOption = (e) => {
     setSelectedOption(e.target.value)
     console.log(selectedOption)
