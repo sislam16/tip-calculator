@@ -16,7 +16,7 @@ function App() {
 
   const [selectedOption, setSelectedOption] = useState(0)
   const [people, setPeople] = useState(null)
-  
+
   const updateOption = (e) => {
     setSelectedOption(e.target.value)
     console.log(selectedOption)
@@ -27,6 +27,10 @@ function App() {
       
     }
     
+  }
+
+  const handleCustomers = (e) =>{
+    console.log(e.target.value)
   }
   return (
     <div className="App">
@@ -43,7 +47,7 @@ function App() {
           }
         </select>
         <p>How many people are splitting the tip?</p>
-        <input type='number'/> <span>people</span>
+        <input type='number' onChange={handleCustomers}/> <span>people</span>
         <br/>
         <button>Split the tip!</button>
       </form>
