@@ -31,6 +31,7 @@ function App() {
 
   const handleCustomers = (e) =>{
     console.log(e.target.value)
+    setPeople(e.target.value)
   }
   return (
     <div className="App">
