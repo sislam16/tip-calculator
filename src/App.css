@@ -3,4 +3,6 @@
   background-color: orange;
 }
 
-
+input {
+  width: 200px;
+}
