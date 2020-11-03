@@ -16,6 +16,7 @@ function App() {
 
   const [selectedOption, setSelectedOption] = useState(0)
   const [people, setPeople] = useState(null)
+  const [billAmount, setAmount] = useState(0)
 
   const updateOption = (e) => {
     setSelectedOption(e.target.value)
@@ -33,12 +34,17 @@ function App() {
     console.log(e.target.value)
     setPeople(e.target.value)
   }
+
+  const handleBill = (e) =>{
+    console.log(e.target.value)
+    setAmount(e.target.value)
+  }
   return (
     <div className="App">
       <h1>Split Tip</h1>
       <form className='calculator' onSubmit = {calculateTip}>
         <p>How much was your bill?</p> 
-        <input type='number' name ='price' min='0' step='any'/>
+        <input type='number' name ='price' min='0' step='any' onChange={handleBill}/>
         <p>How was your service?</p>
         <select onChange = {updateOption} value ={selectedOption}>
           <option>--Select an option--</option>
