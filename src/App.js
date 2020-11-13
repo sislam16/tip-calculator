@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 
 
@@ -17,6 +17,7 @@ function App() {
   const [selectedOption, setSelectedOption] = useState(0)
   const [people, setPeople] = useState(null)
   const [billAmount, setAmount] = useState(0)
+  const [tipAmount, setTipAmount] = useState(null)
 
   const updateOption = (e) => {
     setSelectedOption(e.target.value)
@@ -24,10 +25,11 @@ function App() {
 }
   const calculateTip = async (e) =>{
     e.preventDefault();
-    if(selectedOption !== 0){
-      
-    }
-    
+    let tip = (billAmount/people) * selectedOption
+    tip = Math.ceil(tip/100)
+    setTipAmount(tip)
+    console.log('tip',tip)
+    console.log('bill', billAmount, 'people:', people, 'percent', selectedOption)
   }
 
   const handleCustomers = (e) =>{
@@ -47,7 +49,7 @@ function App() {
         <input type='number' name ='price' min='0' step='any' onChange={handleBill}/>
         <p>How was your service?</p>
         <select onChange = {updateOption} value ={selectedOption}>
-          <option>--Select an option--</option>
+          <option value ='0'>--Select an option--</option>
           {
             serviceOptions.map(el => 
               <option value = {el.value}>{el.quality}</option>)
@@ -58,7 +60,7 @@ function App() {
         <br/>
         <button>Split the tip!</button>
       </form>
-      <p></p>
+      <p> {tipAmount}</p>
     </div>
   );
 }
