@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './App.css';
 
 
@@ -18,31 +18,37 @@ function App() {
   const [people, setPeople] = useState(null)
   const [billAmount, setAmount] = useState(0)
   const [tipAmount, setTipAmount] = useState(null)
+  const[submitted, setSubmitted] = useState(false)
 
   const updateOption = (e) => {
     setSelectedOption(e.target.value)
-    console.log(selectedOption)
 }
   const calculateTip = async (e) =>{
     e.preventDefault();
     let tip = (billAmount/people) * selectedOption
     tip = Math.ceil(tip/100)
     setTipAmount(tip)
-    console.log('tip',tip)
-    console.log('bill', billAmount, 'people:', people, 'percent', selectedOption)
+    console.log('bill', billAmount, 'people:', people, 'percent', selectedOption, 'tip:', tip)
   }
 
   const handleCustomers = (e) =>{
-    console.log(e.target.value)
     setPeople(e.target.value)
   }
 
   const handleBill = (e) =>{
-    console.log(e.target.value)
     setAmount(e.target.value)
+  }
+
+  const handleTipParagraph = (e) =>{
+    setSubmitted(true)
+    
+      return (
+        <p>Please leave ${tipAmount} for your server.</p>
+      )    
   }
   return (
     <div className="App">
+      <div>
       <h1>Split Tip</h1>
       <form className='calculator' onSubmit = {calculateTip}>
         <p>How much was your bill?</p> 
@@ -58,9 +64,10 @@ function App() {
         <p>How many people are splitting the tip?</p>
         <input type='number' onChange={handleCustomers}/> <span>people</span>
         <br/>
-        <button>Split the tip!</button>
+        <button onClick ={handleTipParagraph}>Split the tip!</button>
       </form>
-      <p> {tipAmount}</p>
+      </div>
+      
     </div>
   );
 }
